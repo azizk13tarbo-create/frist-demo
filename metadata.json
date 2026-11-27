@@ -1,0 +1,6 @@
+{
+  "name": "Mabelle — Bakery, Dessert & Pasta Bar",
+  "description": "Official website for Mabelle, a premium 100% eggless bakery, dessert and pasta bar in Salt Lake, Kolkata by Muskaan Gupta.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
