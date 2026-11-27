@@ -38,33 +38,27 @@ test('validateCakeEnquiry rejects missing or invalid required fields', () => {
   const result = validateCakeEnquiry({
     customerName: 'A',
     phone: '1234',
-    eventDate: '',
-    occasion: '',
-    flavour: '',
-    cakeSize: '',
-    inspirationStyle: '',
-    designNotes: 'Hi',
+    cakeType: '',
+    preferredDate: '',
+    message: 'Hi',
   });
 
   assert.equal(result.isValid, false);
   assert.ok(result.errors.customerName);
   assert.ok(result.errors.phone);
-  assert.ok(result.errors.eventDate);
-  assert.ok(result.errors.flavour);
-  assert.ok(result.errors.cakeSize);
-  assert.ok(result.errors.designNotes);
+  assert.ok(result.errors.cakeType);
+  assert.ok(result.errors.preferredDate);
+  assert.ok(result.errors.message);
 });
 
 test('validateCakeEnquiry accepts a complete valid custom cake enquiry', () => {
   const result = validateCakeEnquiry({
     customerName: 'Ananya Sen',
     phone: '+91 98300 12345',
-    eventDate: '2026-12-18',
-    occasion: 'Birthday',
-    flavour: 'Signature Chocolate Truffle',
-    cakeSize: 'One Kilo (1 kg · Serves 8–12)',
+    cakeType: 'Vintage Blush Lambeth Cake',
+    preferredDate: '2026-12-18',
     inspirationStyle: 'Signature Blush Lambeth',
-    designNotes: 'Soft blush frosting with delicate pearl piping and Happy Birthday message.',
+    message: 'Soft blush frosting with delicate pearl piping and Happy Birthday message.',
   });
 
   assert.equal(result.isValid, true);
@@ -75,16 +69,14 @@ test('buildCakeEnquiryMessage and buildWhatsAppUrl format and encode enquiries c
   const message = buildCakeEnquiryMessage({
     customerName: 'Rohan Chatterjee',
     phone: '9830011223',
-    eventDate: '2026-12-20',
-    occasion: 'Anniversary',
-    flavour: 'Classic Espresso Tiramisu',
-    cakeSize: 'Half Kilo (500 g · Serves 4–6)',
+    cakeType: 'Classic Espresso Tiramisu Cake',
+    preferredDate: '2026-12-20',
     inspirationStyle: 'Pressed Botanical Ivory Tier',
-    designNotes: 'Warm ivory tones with pressed flowers and minimal gold accents.',
+    message: 'Warm ivory tones with pressed flowers and minimal gold accents.',
   });
 
   assert.match(message, /Rohan Chatterjee/);
-  assert.match(message, /Classic Espresso Tiramisu/);
+  assert.match(message, /Classic Espresso Tiramisu Cake/);
   assert.match(message, /Pressed Botanical Ivory Tier/);
 
   const genericUrl = buildWhatsAppUrl(message);

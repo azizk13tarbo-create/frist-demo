@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowUpRight, MessageCircle, X } from 'lucide-react';
+import { ArrowDownRight, MessageCircle, X } from 'lucide-react';
 import {
   BRAND_INFO,
   MENU_CATEGORIES,
@@ -34,20 +34,20 @@ export function SignatureCollection() {
   }, [activeProduct]);
 
   return (
-    <section id="menu" className="bg-[#FAF5F0] py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+    <section id="menu" className="bg-[#FAF5F0] py-14 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
         {/* Section Heading */}
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div className="flex flex-col gap-4 sm:gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-xl">
-            <p className="text-xs font-medium tracking-[0.14em] text-[#8E5B52]">
+            <p className="text-[11px] font-medium tracking-[0.14em] text-[#8E5B52] sm:text-xs">
               The Signature Collection
             </p>
-            <h2 className="mt-3 font-serif text-4xl font-medium leading-[1.1] text-[#3A211C] sm:text-5xl">
+            <h2 className="mt-2.5 font-serif text-[clamp(1.95rem,7.2vw,2.65rem)] font-medium leading-[1.08] text-[#3A211C] sm:mt-3 sm:text-5xl">
               Crafted for Every Sweet &amp; Savoury Craving
             </h2>
           </div>
 
-          <p className="max-w-md text-[15px] leading-relaxed text-[#69504B]">
+          <p className="max-w-md text-[14.5px] leading-relaxed text-[#69504B] sm:text-[15px]">
             Explore our curated selection of 100% eggless cakes, mascarpone tiramisu, chocolate
             creations, delicate pastries, and freshly plated gourmet pasta.
           </p>
@@ -57,7 +57,7 @@ export function SignatureCollection() {
         <div
           role="tablist"
           aria-label="Menu categories"
-          className="mt-10 flex items-center gap-2 overflow-x-auto border-b border-[#3A211C]/10 pb-4"
+          className="no-scrollbar -mx-4 mt-7 flex items-center gap-2 overflow-x-auto border-b border-[#3A211C]/10 px-4 pb-3.5 sm:mx-0 sm:mt-10 sm:px-0 sm:pb-4"
         >
           {MENU_CATEGORIES.map((category) => {
             const isSelected = selectedCategory === category;
@@ -68,10 +68,10 @@ export function SignatureCollection() {
                 role="tab"
                 aria-selected={isSelected}
                 onClick={() => setSelectedCategory(category)}
-                className={`inline-flex min-h-[40px] items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap shrink-0 ${
+                className={`inline-flex min-h-[42px] items-center gap-1.5 rounded-full px-3.5 py-2 text-[13px] font-medium transition-colors duration-200 whitespace-nowrap shrink-0 sm:gap-2 sm:px-4 sm:text-sm ${
                   isSelected
                     ? 'bg-[#3A211C] text-[#FAF5F0]'
-                    : 'bg-transparent text-[#5A3F3A] hover:bg-[#F9E9EC] hover:text-[#3A211C]'
+                    : 'bg-[#FFFDFB]/80 text-[#5A3F3A] hover:bg-[#F9E9EC] hover:text-[#3A211C] sm:bg-transparent'
                 }`}
               >
                 <span>{category}</span>
@@ -90,7 +90,7 @@ export function SignatureCollection() {
         {/* Product Grid */}
         <div
           data-testid="menu-grid"
-          className="mt-10 grid grid-cols-1 gap-x-7 gap-y-10 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-7 grid grid-cols-1 gap-x-7 gap-y-6 sm:mt-10 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-3"
         >
           {filteredItems.map((item) => (
             <article
@@ -113,24 +113,24 @@ export function SignatureCollection() {
                   />
                 </div>
 
-                <div className="flex flex-1 flex-col p-6">
-                  <div className="flex items-center gap-2 text-xs text-[#8E5B52]">
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-[#8E5B52]">
                     <span>{item.category}</span>
                     <span aria-hidden="true">·</span>
                     <span>{item.dietaryNote}</span>
                   </div>
 
-                  <h3 className="mt-2 font-serif text-[1.65rem] font-medium leading-snug text-[#3A211C] transition-colors group-hover:text-[#7B4B44]">
+                  <h3 className="mt-2 font-serif text-[1.48rem] font-medium leading-snug text-[#3A211C] transition-colors group-hover:text-[#7B4B44] sm:text-[1.65rem]">
                     {item.name}
                   </h3>
 
-                  <p className="mt-2.5 flex-1 text-sm leading-relaxed text-[#69504B]">
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-[#69504B] sm:mt-2.5">
                     {item.shortDescription}
                   </p>
 
-                  <div className="mt-5 flex items-center justify-between border-t border-[#3A211C]/10 pt-4 text-xs text-[#69504B]">
-                    <span>{item.portion}</span>
-                    <span className="font-medium text-[#3A211C] transition-transform duration-200 group-hover:translate-x-0.5">
+                  <div className="mt-4 flex items-center justify-between gap-2 border-t border-[#3A211C]/10 pt-3.5 text-xs text-[#69504B] sm:mt-5 sm:pt-4">
+                    <span className="truncate">{item.portion}</span>
+                    <span className="font-medium text-[#3A211C] transition-transform duration-200 group-hover:translate-x-0.5 whitespace-nowrap shrink-0">
                       View Details
                     </span>
                   </div>
@@ -140,33 +140,45 @@ export function SignatureCollection() {
           ))}
         </div>
 
-        {/* Ordering Menu Direct Strip */}
-        <div className="mt-14 flex flex-col items-start justify-between gap-5 rounded-2xl bg-[#F9E9EC]/75 p-7 sm:flex-row sm:items-center sm:px-9">
+        {/* Showcase Enquiry Strip */}
+        <div className="mt-11 flex flex-col items-start justify-between gap-5 rounded-2xl bg-[#F9E9EC]/75 p-6 sm:mt-14 sm:flex-row sm:items-center sm:px-9 sm:py-7">
           <div>
-            <p className="font-serif text-2xl font-medium text-[#3A211C] sm:text-[1.75rem]">
-              Ready to browse today&apos;s live menu &amp; order online?
+            <p className="font-serif text-[1.55rem] font-medium leading-snug text-[#3A211C] sm:text-[1.75rem]">
+              Looking for seasonal bakes, hampers, or custom cakes?
             </p>
-            <p className="mt-1 text-sm text-[#69504B]">
-              View real-time availability, seasonal bakes, and ordering options directly on our
-              official AirMenus portal.
+            <p className="mt-1.5 text-sm leading-relaxed text-[#69504B]">
+              Speak directly with our Salt Lake patisserie team on WhatsApp or share your bespoke
+              celebration cake brief.
             </p>
           </div>
-          <a
-            href={BRAND_INFO.orderUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-[#3A211C] px-6 py-2.5 text-sm font-medium text-[#FAF5F0] transition-colors hover:bg-[#523029] whitespace-nowrap shrink-0"
-          >
-            <span>Open Order Menu</span>
-            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-          </a>
+          <div className="flex w-full flex-col gap-2.5 min-[400px]:flex-row sm:w-auto sm:flex-wrap sm:items-center sm:gap-3 shrink-0">
+            <a
+              href={buildWhatsAppUrl(
+                'Hello Mabelle Team, I would like to enquire about your current dessert showcase and availability at Salt Lake, Sector 2.',
+                BRAND_INFO.whatsappNumber,
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-[46px] w-full items-center justify-center gap-2 rounded-full bg-[#3A211C] px-5 py-2.5 text-sm font-medium text-[#FAF5F0] transition-colors hover:bg-[#523029] whitespace-nowrap sm:w-auto sm:px-6"
+            >
+              <MessageCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
+              <span>WhatsApp Enquiry</span>
+            </a>
+            <a
+              href="#cake-enquiry-form"
+              className="inline-flex min-h-[46px] w-full items-center justify-center gap-1.5 rounded-full border border-[#3A211C]/20 bg-[#FFFDFB] px-5 py-2.5 text-sm font-medium text-[#3A211C] transition-colors hover:border-[#3A211C] hover:bg-[#FAF5F0] whitespace-nowrap sm:w-auto"
+            >
+              <span>Custom Cakes</span>
+              <ArrowDownRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+            </a>
+          </div>
         </div>
       </div>
 
-      {/* Accessible Product Detail Modal */}
+      {/* Accessible Product Detail Modal (Bottom-sheet feel on mobile, centered card on desktop) */}
       {activeProduct && (
         <div
-          className="animate-fade-in fixed inset-0 z-50 flex items-center justify-center bg-[#3A211C]/50 p-4 backdrop-blur-xs sm:p-6"
+          className="animate-fade-in fixed inset-0 z-50 flex items-end justify-center bg-[#3A211C]/55 p-0 backdrop-blur-xs sm:items-center sm:p-6"
           onClick={() => setActiveProduct(null)}
         >
           <div
@@ -174,27 +186,27 @@ export function SignatureCollection() {
             aria-modal="true"
             aria-labelledby="product-modal-title"
             onClick={(event) => event.stopPropagation()}
-            className="animate-modal-in relative grid max-h-[90vh] w-full max-w-3xl grid-cols-1 overflow-y-auto rounded-3xl bg-[#FFFDFB] shadow-2xl md:grid-cols-2"
+            className="animate-modal-in relative grid max-h-[92dvh] w-full max-w-3xl grid-cols-1 overflow-y-auto rounded-t-3xl bg-[#FFFDFB] shadow-2xl sm:rounded-3xl md:grid-cols-2"
           >
-              <button
-                type="button"
-                onClick={() => setActiveProduct(null)}
-                aria-label="Close product details"
-                className="absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#FAF5F0]/90 text-[#3A211C] transition-colors hover:bg-[#F2BEC5]"
-              >
-                <X className="h-5 w-5" aria-hidden="true" />
-              </button>
+            <button
+              type="button"
+              onClick={() => setActiveProduct(null)}
+              aria-label="Close product details"
+              className="absolute right-3.5 top-3.5 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#FAF5F0]/95 text-[#3A211C] shadow-xs transition-colors hover:bg-[#F2BEC5] sm:right-4 sm:top-4 sm:h-10 sm:w-10"
+            >
+              <X className="h-5 w-5" aria-hidden="true" />
+            </button>
 
-              <div className="aspect-[4/3] w-full md:aspect-auto md:h-full">
-                <EditorialImage
-                  src={activeProduct.image}
-                  alt={activeProduct.imageAlt}
-                  fallbackTitle={activeProduct.name}
-                  containerClassName="h-full w-full"
-                />
-              </div>
+            <div className="aspect-[16/11] w-full sm:aspect-[4/3] md:aspect-auto md:h-full">
+              <EditorialImage
+                src={activeProduct.image}
+                alt={activeProduct.imageAlt}
+                fallbackTitle={activeProduct.name}
+                containerClassName="h-full w-full"
+              />
+            </div>
 
-              <div className="flex flex-col justify-between p-7 sm:p-8">
+            <div className="flex flex-col justify-between p-6 sm:p-8">
                 <div>
                   <p className="text-xs font-medium text-[#8E5B52]">
                     {activeProduct.category} · {activeProduct.dietaryNote}
@@ -217,23 +229,12 @@ export function SignatureCollection() {
                       {activeProduct.tastingNotes.join(' · ')}
                     </p>
                     <p className="mt-3 text-xs text-[#69504B]">
-                      {activeProduct.availabilityNote}. Live pricing is displayed on our official
-                      ordering portal.
+                      {activeProduct.availabilityNote}.
                     </p>
                   </div>
                 </div>
 
                 <div className="mt-7 flex flex-col gap-3">
-                  <a
-                    href={BRAND_INFO.orderUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-full bg-[#3A211C] px-5 py-3 text-sm font-medium text-[#FAF5F0] transition-colors hover:bg-[#523029]"
-                  >
-                    <span>Order on AirMenus</span>
-                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                  </a>
-
                   <a
                     href={buildWhatsAppUrl(
                       buildProductEnquiryMessage(activeProduct),
@@ -241,10 +242,19 @@ export function SignatureCollection() {
                     )}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-full border border-[#3A211C]/20 bg-[#FAF5F0] px-5 py-3 text-sm font-medium text-[#3A211C] transition-colors hover:border-[#3A211C] hover:bg-[#F9E9EC]"
+                    className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-full bg-[#3A211C] px-5 py-3 text-sm font-medium text-[#FAF5F0] transition-colors hover:bg-[#523029]"
                   >
                     <MessageCircle className="h-4 w-4" aria-hidden="true" />
                     <span>Enquire on WhatsApp</span>
+                  </a>
+
+                  <a
+                    href="#cake-enquiry-form"
+                    onClick={() => setActiveProduct(null)}
+                    className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-full border border-[#3A211C]/20 bg-[#FAF5F0] px-5 py-3 text-sm font-medium text-[#3A211C] transition-colors hover:border-[#3A211C] hover:bg-[#F9E9EC]"
+                  >
+                    <span>Custom Cake Enquiry</span>
+                    <ArrowDownRight className="h-4 w-4" aria-hidden="true" />
                   </a>
                 </div>
               </div>
